@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:pages="clr-namespace:Xamarin.Forms"
+                x:Class="Xamarin.Forms.CheckboxPage"
+                x:TypeArguments="x:String">
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+            <ListView x:Name="listView"
+                      ItemTapped="listView_ItemTapped"
+                      SeparatorVisibility="None"
+                      VerticalScrollBarVisibility="Never"
+                      HorizontalScrollBarVisibility="Never">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                                <CheckBox IsChecked="{Binding IsChecked}" HorizontalOptions="EndAndExpand" Color="Black"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout HorizontalOptions="End"
+                         Orientation="Horizontal">
+                <Button Text="Cancel" Clicked="Cancel_Clicked" HorizontalOptions="Center" VerticalOptions="End" BackgroundColor="Transparent"/>
+                <Button Text="Done" Clicked="Done_Clicked" HorizontalOptions="Center" VerticalOptions="End" BackgroundColor="Transparent"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</pages:BasePage>
