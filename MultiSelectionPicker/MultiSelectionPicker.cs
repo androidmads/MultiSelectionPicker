@@ -58,15 +58,18 @@ namespace Xamarin.Forms
                 {
                     Unfocus();
                     string item = await NavigateToModal<string>(new CheckboxPage(ItemsSource, SelectedIndices));
-                    if (item == "")
-                        return;
-                    SelectedIndices = item.Split(',').Select(x => Convert.ToInt32(x)).ToList();
-                    List<string> selectedItems = new List<string>();
-                    foreach (int i in SelectedIndices)
-                    {
-                        selectedItems.Add(ItemsSource[i]);
+                    if (item == ""){
+                        SelectedIndices = new List<int>();
+                        Text = "";
+                    }else{
+                        SelectedIndices = item.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+                        List<string> selectedItems = new List<string>();
+                        foreach (int i in SelectedIndices)
+                        {
+                            selectedItems.Add(ItemsSource[i]);
+                        }
+                        Text = string.Join(", ", selectedItems);
                     }
-                    Text = string.Join(", ", selectedItems);
                 }
             };
         }
