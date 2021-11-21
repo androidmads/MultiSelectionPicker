@@ -99,7 +99,11 @@ namespace Xamarin.Forms
 
         protected override void OnDisappearing()
         {
-            PageDisappearing?.Invoke(_navigationResut);
+            if (_navigationResut != null)
+            {
+                PageDisappearing?.Invoke(_navigationResut);
+            }
+            
             if (PageDisappearing != null)
             {
                 foreach (var @delegate in PageDisappearing.GetInvocationList())
